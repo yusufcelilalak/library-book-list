@@ -17,5 +17,26 @@ namespace LibraryBookListWeb.Controllers
             IEnumerable<Book> objToBook = _db.Books;
             return View(objToBook);
         }
+
+        //  GET
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        //  POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Add(Book obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Books.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+            
+        }
     }
 }
