@@ -5,9 +5,11 @@
 }
 
 
-<div class="container p-3 w-75">
+ 
 
-    <div class="row my-3">
+<div class="container p-3" style="width: 80%">
+
+    <div class="row my-3 m-auto">
         <div class="col-6">
             <h2>
                 Book List
@@ -17,7 +19,6 @@
             <a asp-controller="Book" asp-action="Add" class="btn btn-outline-success"><i class="bi bi-plus-circle"></i> &nbsp; Add Book</a>
         </div>
     </div>
-
 
     <div class="table-responsive">
         <table class="table table-bordered table-hover mx-auto mt-5" >
@@ -67,9 +68,12 @@
                         <td>
                             @obj.AddedDate
                         </td>
-                        <td>
-                            <div class="btn-group" role="group">
-                                <a asp-controller="Book" asp-action="Edit" asp-route-id="@obj.ID" class="btn btn-outline-success"><i class="bi bi-pencil-square"></i> &nbsp; Edit</a>
+                        <td class="text-center">
+                            <div class="btn-group m-1" role="group">
+                                <a asp-controller="Book" asp-action="Edit" asp-route-id="@obj.ID" class="btn btn-outline-success btn-sm"><i class="bi bi-pencil-square"></i> &nbsp; Edit</a>
+                            </div>
+                            <div class="btn-group m-1" role="group">
+                                <a asp-controller="Book" asp-action="Delete" asp-route-id="@obj.ID" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i> &nbsp; Delete</a>
                             </div>
                         </td>
                     </tr>

@@ -71,5 +71,22 @@ namespace LibraryBookListWeb.Controllers
             return View(obj);
 
         }
+
+        // GET and REMOVE THE DATA FROM TABLE
+        public IActionResult Delete(int? id)
+        {
+
+            var bookObj = _db.Books.Find(id);
+
+            if( bookObj == null)
+            {
+                return NotFound();
+            }
+
+            _db.Books.Remove(bookObj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
     }
 }
