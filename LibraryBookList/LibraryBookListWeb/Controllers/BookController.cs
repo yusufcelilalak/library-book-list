@@ -38,5 +38,38 @@ namespace LibraryBookListWeb.Controllers
             return View(obj);
             
         }
+
+        //  GET
+        public IActionResult Edit(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var bookFromDb = _db.Books.Find(id);
+
+            if(bookFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(bookFromDb);
+        }
+
+        //  POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Book obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Books.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+
+        }
     }
 }
