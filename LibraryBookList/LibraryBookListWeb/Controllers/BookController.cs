@@ -33,6 +33,7 @@ namespace LibraryBookListWeb.Controllers
             {
                 _db.Books.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Book is added successfully!";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -66,6 +67,7 @@ namespace LibraryBookListWeb.Controllers
             {
                 _db.Books.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Book is edited successfully!";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -85,6 +87,7 @@ namespace LibraryBookListWeb.Controllers
 
             _db.Books.Remove(bookObj);
             _db.SaveChanges();
+            TempData["success"] = "Book is deleted from data successfully!";
             return RedirectToAction("Index");
 
         }
